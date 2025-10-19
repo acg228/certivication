@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Contoh Script Error HTML</title>
+</head>
+<body>
+  <h2>Demo Error NaN (Not a Number)</h2>
+  <p id="status">Sedang menghitung...</p>
+  <p id="error" style="color:red; font-weight:bold;"></p>
+
+  <script>
+    try {
+      let input = "bukanAngka";
+      // Kesalahan: mencoba mengonversi string ke angka
+      let hasil = parseInt(input) + 10;
+
+      if (isNaN(hasil)) {
+        throw new Error("Hasil perhitungan tidak valid (NaN).");
+      }
+
+      document.getElementById("status").innerText = "Hasil: " + hasil;
+    } catch (err) {
+      document.getElementById("error").innerText = "Terjadi error: " + err.message;
+      console.error("Detail error:", err);
+    } finally {
+      document.getElementById("status").innerText = "Proses selesai (terjadi error).";
+    }
+  </script>
+</body>
+</html>
